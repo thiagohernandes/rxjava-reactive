@@ -1,3 +1,2 @@
 # rxjava-reactive
-RxJava Reactive App Java
-Básico
+RxJava Reactive App - Estudos
