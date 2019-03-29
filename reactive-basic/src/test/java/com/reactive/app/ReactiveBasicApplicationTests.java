@@ -1,4 +1,4 @@
-package com.reactive.reactivebasic;
+package com.reactive.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

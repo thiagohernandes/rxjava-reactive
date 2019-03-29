@@ -1,4 +1,4 @@
-package com.reactive.reactivebasic;
+package com.reactive.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
