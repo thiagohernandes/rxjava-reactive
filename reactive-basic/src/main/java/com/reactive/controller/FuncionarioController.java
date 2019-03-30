@@ -21,6 +21,7 @@ public class FuncionarioController {
     FuncionarioService funcionarioService;
 
     @GetMapping(produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    //@GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Funcionario> findAll() {
         LOGGER.info("findAll");
         return Flux.fromIterable(funcionarioService.getAll()).delayElements(Duration.ofMillis(500));
