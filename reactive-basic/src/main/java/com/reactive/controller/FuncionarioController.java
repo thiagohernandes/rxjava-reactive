@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/funcionarios")
@@ -20,19 +21,19 @@ public class FuncionarioController {
     @Autowired
     FuncionarioService funcionarioService;
 
-    @GetMapping(produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
-    //@GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  //  @GetMapping(produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Funcionario> findAll() {
         LOGGER.info("findAll");
         return Flux.fromIterable(funcionarioService.getAll()).delayElements(Duration.ofMillis(500));
     }
-   /*
-    @GetMapping("/{id}")
-    public Mono findById(@PathVariable("id") Integer id) {
-        LOGGER.info("findById: ", id);
-        return funcionarioService.getById(id);
-    }
 
+    @GetMapping("/{id}")
+    public Optional<Funcionario> findById(@PathVariable("id") Integer id) {
+        LOGGER.info("findById: ", id);
+        return funcionarioService.getById(id).isPresent() ? funcionarioService.getById(id) : null;
+    }
+/*
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         LOGGER.info("deleteById: ", id);
